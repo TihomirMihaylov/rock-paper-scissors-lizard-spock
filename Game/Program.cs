@@ -7,8 +7,6 @@ namespace Game
 {
     public class Program
     {
-        private static IConfiguration Configuration { get; }
-
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
@@ -17,7 +15,8 @@ namespace Game
             builder.Services.AddOptions<Configuration>().Bind(builder.Configuration.GetSection("Config"));
             
             // Add services to the container.
-            builder.Services.AddSingleton<IChoices, ChoicesService>();
+            builder.Services.AddSingleton<IChoicesService, ChoicesService>();
+            builder.Services.AddSingleton<IPlayService, PlayService>();
             builder.Services.AddSingleton<IRandomProviderClient, RandomProviderClient>();
 
             builder.Services.AddControllers();

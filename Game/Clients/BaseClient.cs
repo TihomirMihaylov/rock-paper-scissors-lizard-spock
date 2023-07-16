@@ -7,7 +7,7 @@ namespace Game.Clients
     public class BaseClient
     {
         private readonly HttpClient m_HttpClient;
-        private static readonly JsonSerializer JsonSerializer = new JsonSerializer();
+        private static readonly JsonSerializer JsonSerializer = new();
 
         protected BaseClient(string baseAddress)
         {

@@ -9,16 +9,13 @@ namespace Game.Controllers
     //[Route("[controller]")] //both will work
     public class ChoicesController : GameController
     {
-        private readonly IChoices m_ChoicesService;
+        private readonly IChoicesService m_ChoicesService;
 
-        public ChoicesController(IChoices choicesService)
+        public ChoicesController(IChoicesService choicesService)
         {
             m_ChoicesService = choicesService ?? throw new ArgumentNullException(nameof(choicesService));
         }
 
-        public IEnumerable<Choice> Get()
-        {
-            return m_ChoicesService.GetAllChoices();
-        }
+        public IEnumerable<Choice> Get() => m_ChoicesService.GetAllChoices();
     }
 }

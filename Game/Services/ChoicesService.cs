@@ -2,11 +2,10 @@
 using Game.Enums;
 using Game.Models;
 using Game.Services.Interfaces;
-using Microsoft.Extensions.Options;
 
 namespace Game.Services
 {
-    public class ChoicesService : IChoices
+    public class ChoicesService : IChoicesService
     {
         private readonly IRandomProviderClient m_RandomProviderClient;
         private readonly ILogger<ChoicesService> m_Logger;
@@ -50,7 +49,7 @@ namespace Game.Services
 
                 //use fallback mechanism when API doesn't return a response
                 var rndGenerator = new Random();
-                var rdnValue = rndGenerator.Next(1, 5);
+                var rdnValue = rndGenerator.Next(1, 6);
                 return new Choice
                 {
                     Id = rdnValue,

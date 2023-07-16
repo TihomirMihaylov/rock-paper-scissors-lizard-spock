@@ -9,16 +9,13 @@ namespace Game.Controllers
     public class ChoiceController : GameController
     {
         
-        private readonly IChoices m_ChoicesService;
+        private readonly IChoicesService m_ChoicesService;
 
-        public ChoiceController(IChoices choicesService)
+        public ChoiceController(IChoicesService choicesService)
         {
             m_ChoicesService = choicesService ?? throw new ArgumentNullException(nameof(choicesService));
         }
 
-        public async Task<Choice> Get()
-        {
-            return await m_ChoicesService.GetRandomChoiceAsync(Cts.Token);
-        }
+        public async Task<Choice> Get() => await m_ChoicesService.GetRandomChoiceAsync(Cts.Token);
     }
 }
